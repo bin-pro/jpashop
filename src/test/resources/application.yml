@@ -1,0 +1,20 @@
+spring:
+
+#기본적으로 메모리모드로 실행하고 동작하기때문에 밑에 다 없어도됨 logging은 예외
+  datasource:
+    url: jdbc:h2:mem:test #test돌리면 이 yml을 우선으로 동작하고 + 메모리모드로 동작
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create #애플리케이션 실행 시점에 entity의 정보를 전부 지우고 다시 생성함.
+    properties:
+      hibernate:
+        #show_sql: true #System.out.으로 쿼리가 찍힘.
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug #실제 hibernate가 구현한 sql 쿼리를 전부 '로그로' 볼 수 있음.
+    org.hibernate.type: trace #sql 파라미터 로깅하기전
